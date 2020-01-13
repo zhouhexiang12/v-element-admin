@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
+    "mock": "cross-env MOCK_FLAG=mock MOCK_LIST=zhx vue-cli-service serve --mode mocking",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
     "preview": "node build/index.js --preview",
@@ -39,6 +40,7 @@
     "babel-jest": "23.6.0",
     "chalk": "2.4.2",
     "connect": "3.6.6",
+    "cross-env": "^5.2.0",
     "eslint": "5.15.3",
     "eslint-plugin-vue": "5.2.2",
     "html-webpack-plugin": "3.2.0",

@@ -37,7 +37,7 @@ module.exports = {
     'camelcase': [0, {
       'properties': 'always'
     }],
-    'comma-dangle': [2, 'never'],
+    // 'comma-dangle': [2, 'never'],  //对象字面量项尾不能有逗号
     'comma-spacing': [2, {
       'before': false,
       'after': true
@@ -166,11 +166,12 @@ module.exports = {
       'avoidEscape': true,
       'allowTemplateLiterals': true
     }],
-    'semi': [2, 'never'],
-    'semi-spacing': [2, {
-      'before': false,
-      'after': true
-    }],
+    //结尾不要分号
+    // 'semi': [2, 'never'],
+    // 'semi-spacing': [2, {
+    //   'before': false,
+    //   'after': true
+    // }],
     'space-before-blocks': [2, 'always'],
     'space-before-function-paren': [2, 'never'],
     'space-in-parens': [2, 'never'],

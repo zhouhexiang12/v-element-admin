@@ -80,8 +80,7 @@ const actions = {
     // 返回 Promise 对象
     return new Promise(async resolve => {
       const re = await axios.get('/router')
-      const router = re.data.data
-      console.log(re)
+      const router = re.data
       // const router = asyncRoutes
       // console.log(filterRouter(routers))
 

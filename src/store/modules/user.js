@@ -1,6 +1,7 @@
-import { login, logout, getInfo } from '@/api/user'
+// import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import API from '@/api/login'
 
 const getDefaultState = () => {
   return {
@@ -32,7 +33,8 @@ const actions = {
   login({ commit }, userInfo) {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
+      // login({ username: username.trim(), password: password }).then(response => {
+      API.tokens({ username: username.trim(), password: password }).then(response => {
         const { data } = response
         commit('SET_TOKEN', data.token)
         setToken(data.token)
@@ -46,15 +48,14 @@ const actions = {
   // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
+      API.users(state.token).then(response => {
+      // API.users(state.token).then(response => {
         const { data } = response
-
         if (!data) {
           reject('Verification failed, please Login again.')
         }
 
-        const { name, avatar } = data
-
+        const { name, avatar } = data['admin-token']
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         resolve(data)
@@ -67,7 +68,7 @@ const actions = {
   // user logout
   logout({ commit, state }) {
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
+      API.logout(state.token).then(() => {
         removeToken() // must remove  token  first
         resetRouter()
         commit('RESET_STATE')

@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
+const proxy = require('./proxy')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -13,7 +14,8 @@ const name = defaultSettings.title || 'vue Admin Template' // page title
 // For example, Mac: sudo npm run
 // You can change the port by the following methods:
 // port = 9528 npm run dev OR npm run dev --port = 9528
-const port = process.env.port || process.env.npm_config_port || 9528 // dev port
+// const port = process.env.port || process.env.npm_config_port || 9528 // dev port
+const port = 8088 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -30,21 +32,35 @@ module.exports = {
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
+    disableHostCheck: true,
     port: port,
-    open: true,
+    // open: true,
     overlay: {
       warnings: false,
       errors: true
     },
-    before: require('./mock/mock-server.js')
+    proxy: proxy,
   },
+  // devServer: {
+  //   port: port,
+  //   open: true,
+  //   overlay: {
+  //     warnings: false,
+  //     errors: true
+  //   },
+  //   before: require('./mock/mock-server.js')
+  // },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     name: name,
     resolve: {
       alias: {
-        '@': resolve('src')
+        '@': resolve('src'),
+        api: '@/api',
+        http: '@/http',
+        components: '@/components',
+        sass: '@/assets/sass'
       }
     }
   },

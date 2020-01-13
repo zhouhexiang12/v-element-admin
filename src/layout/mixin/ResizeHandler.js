@@ -18,11 +18,11 @@ export default {
     window.removeEventListener('resize', this.$_resizeHandler)
   },
   mounted() {
-    const isMobile = this.$_isMobile()
-    if (isMobile) {
-      store.dispatch('app/toggleDevice', 'mobile')
-      store.dispatch('app/closeSideBar', { withoutAnimation: true })
-    }
+    // const isMobile = this.$_isMobile()
+    // if (isMobile) {
+    //   store.dispatch('app/toggleDevice', 'mobile')
+    //   store.dispatch('app/closeSideBar', { withoutAnimation: true })
+    // }
   },
   methods: {
     // use $_ for mixins properties
