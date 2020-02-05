@@ -9,6 +9,7 @@
     "mock": "cross-env MOCK_FLAG=mock MOCK_LIST=zhx vue-cli-service serve --mode mocking",
     "build:prod": "vue-cli-service build",
     "build:stage": "vue-cli-service build --mode staging",
+    "build:mocking": "cross-env MOCK_FLAG=mock MOCK_LIST=zhx vue-cli-service build --mode mocking",
     "preview": "node build/index.js --preview",
     "lint": "eslint --ext .js,.vue src",
     "test:unit": "jest --clearCache && vue-cli-service test:unit",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "7.0.0",
     "@babel/register": "7.0.0",
+    "@vue/babel-preset-jsx": "^1.1.0",
     "@vue/cli-plugin-babel": "3.6.0",
     "@vue/cli-plugin-eslint": "^3.9.1",
     "@vue/cli-plugin-unit-jest": "3.6.3",
@@ -38,6 +40,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "23.6.0",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
     "chalk": "2.4.2",
     "connect": "3.6.6",
     "cross-env": "^5.2.0",

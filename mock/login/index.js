@@ -8,12 +8,13 @@ function mockReq(methods) {
         code: '0',
         message: 'token查询成功',
         'data': {
-          admin: {
-            token: 'admin-token'
-          },
-          editor: {
-            token: 'editor-token'
-          }
+          token: 'admin-token'
+          // admin: {
+          //   token: 'admin-token'
+          // },
+          // editor: {
+          //   token: 'editor-token'
+          // }
         }
       });
       break;
