@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+const isProd = process.env.NODE_ENV === 'production';
 
 Vue.use(Router)
 
@@ -77,7 +78,33 @@ export const constantRoutes = [
     ]
   },
 
-  {
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: 'Form', icon: 'form' }
+  //     }
+  //   ]
+  // }
+
+  // 404 page must be placed at the end !!!
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+// 非生产环境用
+if (!isProd) {
+  // constantRoutes.splice(1, 0, {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: () => import('@/views/login/index'),
+  //   hidden: true,
+  // });
+  // 测试页面
+  constantRoutes.push({
     path: '/form',
     component: Layout,
     children: [
@@ -88,12 +115,8 @@ export const constantRoutes = [
         meta: { title: 'Form', icon: 'form' }
       }
     ]
-  }
-
-  // // 404 page must be placed at the end !!!
-  // { path: '*', redirect: '/404', hidden: true }
-]
-
+  });
+}
 /**
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles

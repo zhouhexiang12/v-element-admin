@@ -55,9 +55,10 @@ Mock.mock(/router/, 'get', () => { // 三个参数。第一个路径，第二个
             ]
           },
           {
-            path: 'menu2',
-            component: 'menu2',
-            meta: { title: 'menu2' }
+            path: 'Menu2',
+            component: 'Menu2',
+            name: 'Menu2',
+            meta: { title: 'Menu2' }
           }
         ]
       },
